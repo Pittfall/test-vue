@@ -4,7 +4,7 @@
      <hr>
      <router-link to="/">Home</router-link>
      <router-link to="/users/10">Users</router-link>
-     <router-link to="/Exercise">Exercise</router-link>
+     <router-link to="/Exercises">Exercises</router-link>
      <hr>
      <router-view></router-view>
   </div>
