@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-expansion-panel>
-      <v-expansion-panel-content v-model="expanded" v-for="(item,i) in exerciseSet" :key="i">
+      <v-expansion-panel-content v-for="(item,i) in exerciseSet" :key="i">
         <div slot="header">
           <div v-if="!expanded">{{ item.name }}</div>
         </div>
-        <excercise @theName='changeName($event, item.id)'></excercise>
+        <excercise @changeData='changeExercise($event, item.id)'></excercise>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <v-btn color="primary" v-on:click="addExercise">Add Exercise</v-btn>
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       expanded: false,
-      exerciseSet: [],
+      exerciseSet: [], // id, name, weight, sets
       componentId: 0
     }
   },
@@ -27,18 +27,20 @@ export default {
     'excercise' : Excercise
   },
   methods: {
-    changeName(newValue, id) {
-      var updateValue = 'New Exercise';
+    changeExercise(newData, id) {
+      var updatedName = 'New Exercise';
 
-      if (newValue.trim())
+      if (newData.name.trim())
       {
-        updateValue = newValue;
+        updatedName = newData.name;
       }
 
-      this.exerciseSet.find(e => e.id === id).name = updateValue;
+      this.exerciseSet.find(e => e.id === id).name = updatedName;
+      this.exerciseSet.find(e => e.id === id).weight = newData.weight;
+      this.exerciseSet.find(e => e.id === id).sets = newData.sets;
     },
     addExercise() {
-      this.exerciseSet.push({ id: ++this.componentId, name: 'New Exercise'});
+      this.exerciseSet.push({ id: ++this.componentId, name: 'New Exercise', weight: '', sets: ''});
     }
   }
 }
