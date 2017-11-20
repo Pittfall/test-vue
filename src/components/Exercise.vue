@@ -19,7 +19,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  props: [
+    'item'
+  ],
   data () {
     return {
       valid: false,
@@ -32,7 +37,10 @@ export default {
     changeInput(event) {
       this.$emit('changeData', {name: this.name, weight: this.weight, sets: this.sets});
     }
-  }
+  },
+  computed : mapGetters( {
+    exercise : 'exercise'
+  })
 }
 </script>
 

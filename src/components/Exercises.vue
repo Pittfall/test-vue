@@ -3,7 +3,7 @@
     <v-expansion-panel>
       <v-expansion-panel-content v-for="(item,index) in exerciseSet" :key="index">
         <div slot="header">{{ item.name }}</div>
-        <excercise :id="item.id"></excercise>
+        <excercise :item="item"></excercise>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <v-btn color="primary" v-on:click="addExercise">Add Exercise</v-btn>
@@ -12,6 +12,7 @@
 
 <script>
 import Excercise from './Exercise.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -28,10 +29,8 @@ export default {
       this.$store.state.exerciseSet.push({ id: ++this.componentId, name: 'New Exercise', weight: '', sets: ''});
     }
   },
-  computed: {
-    exerciseSet() {
-      return this.$store.state.exerciseSet;
-    }
-  }
+  computed: mapGetters({
+    exerciseSet : 'exercises'
+  })
 }
 </script>
