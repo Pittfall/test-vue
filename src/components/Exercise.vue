@@ -3,19 +3,16 @@
     <v-text-field
       label="Name"
       v-model="name"
-      @input="changeInput"
       required
     ></v-text-field>
     <v-text-field
       label="Weight"
       v-model="weight"
-      @input="changeInput"
       required
     ></v-text-field>
     <v-text-field
       label="Sets"
       v-model="sets"
-      @input="changeInput"
       required
     ></v-text-field>
   </v-form>
