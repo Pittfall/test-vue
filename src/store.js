@@ -10,11 +10,33 @@ export default new Vuex.Store({
     getters: {
         exercise: (state) => (id) => {
             return state.exerciseSet.find( e => {
-                return e.id = id;
+                return e.id == id;
             });
         },
         exercises(state) {
             return state.exerciseSet;
+        }
+    },
+    mutations: {
+        addExercise(state, exercise) {
+            state.exerciseSet.push(exercise);
+        },
+        updateExercise(state, newExercise) {
+            const i = state.exerciseSet.findIndex(e => {
+                return e.id == newExercise.id;
+            });
+
+            state.exerciseSet[i] = newExercise;
+        }
+    },
+    actions : {
+        addExercise({ commit, state}, exercise) {
+            setTimeout(() => {
+                commit('addExercise', exercise);
+            }, 5000);
+        },
+        updateExercise({ commit, state}, newExercise) {
+            commit('updateExercise', newExercise);
         }
     }
 });

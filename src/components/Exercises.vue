@@ -26,7 +26,11 @@ export default {
   },
   methods: {
     addExercise() {
-      this.$store.state.exerciseSet.push({ id: ++this.componentId, name: 'New Exercise', weight: '', sets: ''});
+      const exercise = { id: ++this.componentId, name: 'New Exercise', weight: '', sets: '' };
+      const exerciseUpdate = { id: 1, name: 'Updated Exercise', weight: '', sets: '' };
+
+      this.$store.dispatch('addExercise', exercise);
+      this.$store.dispatch('updateExercise', exerciseUpdate);
     }
   },
   computed: mapGetters({
