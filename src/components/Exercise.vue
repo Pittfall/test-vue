@@ -26,7 +26,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: [
-    'id'
+    'exercise'
   ],
   data () {
     return {
@@ -38,10 +38,12 @@ export default {
   },
   methods: {
     updateExercise(event) {
-      const exercise = { id: this.id, name: this.name, weight: this.weight, sets: this.sets };
+      const updatedExercise = { id: this.id, name: this.name, weight: this.weight, sets: this.sets };
 
-      this.$store.dispatch('updateExercise', exercise);
+      this.$store.dispatch('updateExercise', updatedExercise);
     }
+  },
+  computed: {
   }
 }
 </script>

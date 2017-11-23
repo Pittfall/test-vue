@@ -3,7 +3,7 @@
     <v-expansion-panel>
       <v-expansion-panel-content v-for="(item,index) in exerciseSet" :key="index">
         <div slot="header">{{ item.name }}</div>
-        <excercise :id="item.id"></excercise>
+        <excercise :exercise="item"></excercise>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <v-btn color="primary" v-on:click="addExercise">Add Exercise</v-btn>
