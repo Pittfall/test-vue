@@ -3,16 +3,19 @@
     <v-text-field
       label="Name"
       v-model="name"
+      @input="updateExercise"
       required
     ></v-text-field>
     <v-text-field
       label="Weight"
       v-model="weight"
+      @input="updateExercise"
       required
     ></v-text-field>
     <v-text-field
       label="Sets"
       v-model="sets"
+      @input="updateExercise"
       required
     ></v-text-field>
   </v-form>
@@ -23,7 +26,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: [
-    'item'
+    'id'
   ],
   data () {
     return {
@@ -34,13 +37,12 @@ export default {
     }
   },
   methods: {
-    changeInput(event) {
-      this.$emit('changeData', {name: this.name, weight: this.weight, sets: this.sets});
+    updateExercise(event) {
+      const exercise = { id: this.id, name: this.name, weight: this.weight, sets: this.sets };
+
+      this.$store.dispatch('updateExercise', exercise);
     }
-  },
-  computed : mapGetters( {
-    exercise : 'exercise'
-  })
+  }
 }
 </script>
 

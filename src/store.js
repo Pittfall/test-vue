@@ -31,9 +31,7 @@ export default new Vuex.Store({
     },
     actions : {
         addExercise({ commit, state}, exercise) {
-            setTimeout(() => {
-                commit('addExercise', exercise);
-            }, 5000);
+            commit('addExercise', exercise);
         },
         updateExercise({ commit, state}, newExercise) {
             commit('updateExercise', newExercise);
